@@ -9,6 +9,15 @@
         return $don;
     }
 
+    function getProduct($paramid)
+    {
+        $db = dbConnect();
+        $req = $db->prepare("SELECT * FROM products WHERE id=?");
+        $req->execute([$paramid]);
+        $don = $req->fetch();
+
+        return $don;
+    }
 
 
     function dbConnect(): PDO

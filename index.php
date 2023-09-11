@@ -3,7 +3,8 @@
     $menu = [
         "home" => "home.php",
         "presentation" => "presentation.php",
-        "contact" => "contact.php"
+        "contact" => "contact.php",
+        "product"=> "product.php"
     ];
     if(isset($_GET['action']))
     {
@@ -22,6 +23,20 @@
             {
                 $myMenu = $menu['contact'];
                 include('model/postcontact.php');
+            }elseif($getMenu = "product")
+            {
+                if(isset($_GET['id']))
+                {
+                    $id = htmlspecialchars($_GET['id']);
+                    if( $product = getProduct($id))
+                   {
+                       $myMenu = $menu['product'];
+                   }else{
+                       header("LOCATION:404.php");
+                   }
+                }else{
+                    header("LOCATION:404.php");
+                }
             }
 
 
