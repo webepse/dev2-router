@@ -32,7 +32,9 @@
 
 
     }else{
+        $products = getProducts();
         $myMenu = $menu['home'];
+
     }
 
 ?>
