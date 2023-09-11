@@ -4,8 +4,9 @@
     {
         $db = dbConnect();
         $req = $db->query("SELECT * FROM products");
+        $don = $req->fetchall();
 
-        return $req;
+        return $don;
     }
 
 
