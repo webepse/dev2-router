@@ -1,9 +1,11 @@
 <?php
 
-    function getProducts()
+    function getHomeProducts($limit)
     {
         $db = dbConnect();
-        $req = $db->query("SELECT * FROM products");
+        $req = $db->prepare("SELECT * FROM products ORDER BY id DESC LIMIT 0, :limit");
+        $req->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $req->execute();
         $don = $req->fetchall();
 
         return $don;

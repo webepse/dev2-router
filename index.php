@@ -14,7 +14,7 @@
         {
             if($getMenu=="home")
             {
-                $products = getProducts();
+                $products = getHomeProducts(3);
                 $myMenu = $menu['home'];
             }elseif($getMenu=="presentation")
             {
