@@ -1,17 +1,19 @@
 <?php
+    require "model/model.php";
+    $menu = [
+        "home" => "home.php",
+        "presentation" => "presentation.php",
+        "contact" => "contact.php"
+    ];
     if(isset($_GET['action']))
     {
-        $menu = [
-            "home" => "home.php",
-            "presentation" => "presentation.php",
-            "contact" => "contact.php"
-        ];
         $getMenu = htmlspecialchars($_GET['action']);
 
         if(array_key_exists($getMenu,$menu))
         {
             if($getMenu=="home")
             {
+                $products = getProducts();
                 $myMenu = $menu['home'];
             }elseif($getMenu=="presentation")
             {
