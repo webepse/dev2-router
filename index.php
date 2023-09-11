@@ -4,7 +4,8 @@
         "home" => "home.php",
         "presentation" => "presentation.php",
         "contact" => "contact.php",
-        "product"=> "product.php"
+        "product"=> "product.php",
+        "products" => "products.php"
     ];
     if(isset($_GET['action']))
     {
@@ -23,7 +24,7 @@
             {
                 $myMenu = $menu['contact'];
                 include('model/postcontact.php');
-            }elseif($getMenu = "product")
+            }elseif($getMenu == "product")
             {
                 if(isset($_GET['id']))
                 {
@@ -37,6 +38,18 @@
                 }else{
                     header("LOCATION:404.php");
                 }
+            }elseif($getMenu == "products")
+            {
+                $limit=3;
+                if(isset($_GET['page']))
+                {
+                    $pg = htmlspecialchars($_GET['page']);
+                }else{
+                    $pg=1;
+                }
+                $products = getProducts($pg,$limit);
+                $nbPage = paginationNbPage($limit);
+                $myMenu = $menu['products'];
             }
 
 
@@ -68,9 +81,11 @@
 <body>
     <?php include("partials/header.php"); ?>
     <main>
-        <?php
-            include("view/".$myMenu);
-        ?>
+        <div class="container">
+            <?php
+                include("view/".$myMenu);
+            ?>
+        </div>
     </main>
     <?php include("partials/footer.php"); ?>
 </body>
