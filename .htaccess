@@ -1,0 +1,7 @@
+Options +FollowSymlinks
+RewriteEngine On
+#pour les alias
+RewriteBase /PHPJordan/router/
+
+RewriteRule ^products-page-([0-9]+)$ index.php?action=products&page=$1 [L]
+RewriteRule ^([a-z]+)$ index.php?action=$1 [L]
